@@ -4,8 +4,11 @@
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
   process.env.NODE_ENV = "openshift";
 } else {
-  process.env.NODE_ENV = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+  process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 }
+
+// Check Enviroment
+console.log('Enviroment is: ' + process.env.NODE_ENV);
 
 var mongoose = require('./config/mongoose');
 var express = require('./config/express');
