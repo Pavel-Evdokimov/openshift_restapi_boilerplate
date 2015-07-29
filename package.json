@@ -27,7 +27,8 @@
     "express": "^4.13.1",
     "hogan": "^1.0.2",
     "hogan-express": "^0.5.2",
-    "mongoose": "^4.1.0"
+    "mongoose": "^4.1.0",
+    "node-restful": "^0.2.1"
   },
   "devDependencies": {},
   "bundleDependencies": [],
