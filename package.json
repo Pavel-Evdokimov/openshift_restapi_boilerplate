@@ -1,36 +1,36 @@
 {
-  "name": "OpenShift-Nodejs-Cartridge",
-  "version": "1.1.0",
-  "description": "Node.js Cartridge for OpenShift",
+  "name": "BookCase",
+  "version": "0.0.1",
+  "description": "BookCase project",
   "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
+    "BookCase",
+    "Citation"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ryanj@redhat.com",
-    "url":  "http://openshift.redhat.com/"
+    "name": "PavelEvdokimov",
+    "email": "p_evdokimov@chebit24.ru",
+    "url": "www.chebit24.ru"
   },
-  "homepage": "http://openshift.redhat.com/",
+  "homepage": "www.chebit24.ru",
   "repository": {
     "type": "git",
     "url": "https://gitub.com/openshift/nodejs-custom-version-openshift.git"
   },
-
   "engines": {
     "node": ">= 0.12.7",
     "npm": ">= 2.5.1"
   },
-
   "dependencies": {
-    "config-multipaas": "^0.1.0",
-    "restify": "^2.8.3"
+    "body-parser": "^1.13.2",
+    "compression": "^1.5.1",
+    "ejs": "^2.3.3",
+    "express": "^4.13.1",
+    "hogan": "^1.0.2",
+    "hogan-express": "^0.5.2",
+    "mongoose": "^4.1.0"
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
   "private": true,
   "scripts": {
     "start": "node server.js"

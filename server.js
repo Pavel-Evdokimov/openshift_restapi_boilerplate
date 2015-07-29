@@ -1,30 +1,21 @@
-var cc          = require('config-multipaas'),
-    restify     = require('restify'),
-    fs          = require('fs')
+/*jslint node: true */
+'use strict';
 
-var config      = cc(),
-    app         = restify.createServer()
+if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
+  process.env.NODE_ENV = "openshift";
+} else {
+  process.env.NODE_ENV = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+}
 
-app.use(restify.queryParser())
-app.use(restify.CORS())
-app.use(restify.fullResponse())
+var mongoose = require('./config/mongoose');
+var express = require('./config/express');
+var config = require('./config/config');
 
-// Routes
-app.get('/status', function (req, res, next)
-{
-  res.send("{status: 'ok'}");
+var db = mongoose();
+var app = express();
+app.listen(config.port, config.ipaddress, function() {
+  console.log('%s: Node server started on %s:%d ...',
+    Date(Date.now()), config.ipaddress, config.port);
 });
 
-app.get('/', function (req, res, next)
-{
-  var data = fs.readFileSync(__dirname + '/index.html');
-  res.status(200);
-  res.header('Content-Type', 'text/html');
-  res.end(data.toString().replace(/host:port/g, req.header('Host')));
-});
-
-app.get(/\/(css|js|img)\/?.*/, restify.serveStatic({directory: './static/'}));
-
-app.listen(config.get('PORT'), config.get('IP'), function () {
-  console.log( "Listening on " + config.get('IP') + ", port " + config.get('PORT') )
-});
+module.exports = app;
