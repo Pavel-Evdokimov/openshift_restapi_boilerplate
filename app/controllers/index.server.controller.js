@@ -3,11 +3,13 @@
 
 exports.render = function(req, res) {
   res.locals = {
-    title: "new title2"
+    message: "This is message from index.server.controller.js",
+    title: "This is title"
   };
   res.render('index', {
     partials: {
       part: "partials/part"
-    }
+    },
+    layout: "layouts/layout"
   });
 };
